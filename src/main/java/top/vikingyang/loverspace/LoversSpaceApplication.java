@@ -1,4 +1,4 @@
-package top.vikingyang.lovers.space;
+package top.vikingyang.loverspace;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
