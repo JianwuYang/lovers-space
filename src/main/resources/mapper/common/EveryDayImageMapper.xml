@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.vikingyang.loverspace.mapper.common.EveryDayImageMapper">
+  <resultMap id="BaseResultMap" type="top.vikingyang.loverspace.entity.common.EveryDayImage">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="startDate" jdbcType="VARCHAR" property="startDate" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="copyright" jdbcType="VARCHAR" property="copyright" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="errorMsg" jdbcType="VARCHAR" property="errorMsg" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="top.vikingyang.loverspace.entity.common.EveryDayImage">
+    <result column="imageData" jdbcType="BLOB" property="imageData" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, startDate, url, copyright, `status`, errorMsg
+  </sql>
+  <sql id="Blob_Column_List">
+    imageData
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from everyDayImage
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from everyDayImage
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="top.vikingyang.loverspace.entity.common.EveryDayImage" useGeneratedKeys="true">
+    insert into everyDayImage (startDate, url, copyright,
+      `status`, errorMsg, imageData
+      )
+    values (#{startDate,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, #{copyright,jdbcType=VARCHAR},
+      #{status,jdbcType=VARCHAR}, #{errorMsg,jdbcType=VARCHAR}, #{imageData,jdbcType=BLOB}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="top.vikingyang.loverspace.entity.common.EveryDayImage" useGeneratedKeys="true">
+    insert into everyDayImage
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="startDate != null">
+        startDate,
+      </if>
+      <if test="url != null">
+        url,
+      </if>
+      <if test="copyright != null">
+        copyright,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="errorMsg != null">
+        errorMsg,
+      </if>
+      <if test="imageData != null">
+        imageData,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="startDate != null">
+        #{startDate,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null">
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="copyright != null">
+        #{copyright,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="errorMsg != null">
+        #{errorMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="imageData != null">
+        #{imageData,jdbcType=BLOB},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="top.vikingyang.loverspace.entity.common.EveryDayImage">
+    update everyDayImage
+    <set>
+      <if test="startDate != null">
+        startDate = #{startDate,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null">
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="copyright != null">
+        copyright = #{copyright,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="errorMsg != null">
+        errorMsg = #{errorMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="imageData != null">
+        imageData = #{imageData,jdbcType=BLOB},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="top.vikingyang.loverspace.entity.common.EveryDayImage">
+    update everyDayImage
+    set startDate = #{startDate,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR},
+      copyright = #{copyright,jdbcType=VARCHAR},
+      `status` = #{status,jdbcType=VARCHAR},
+      errorMsg = #{errorMsg,jdbcType=VARCHAR},
+      imageData = #{imageData,jdbcType=BLOB}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="top.vikingyang.loverspace.entity.common.EveryDayImage">
+    update everyDayImage
+    set startDate = #{startDate,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR},
+      copyright = #{copyright,jdbcType=VARCHAR},
+      `status` = #{status,jdbcType=VARCHAR},
+      errorMsg = #{errorMsg,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
