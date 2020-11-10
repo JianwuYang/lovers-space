@@ -6,6 +6,12 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
   liquibase:
     change-log: classpath:db/changelog.xml
+  quartz:
+    job-store-type: memory
 
 mybatis:
   mapper-locations: classpath:mapper/**/*.xml
+
+
+schedule:
+  everyDayImage: "* * * * * ? *"
