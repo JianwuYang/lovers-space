@@ -17,7 +17,7 @@ class EveryDayImageServiceImplTest extends BaseTest {
     @Test
     public void test(){
         EveryDayImage image = new EveryDayImage();
-        image.setStartDate("20200101");
+        image.setImageDate("20200101");
         image.setCopyright("Copyright Test");
         image.setUrl("/testUrl");
         int i = everyDayImageService.insertSelective(image);
@@ -27,9 +27,7 @@ class EveryDayImageServiceImplTest extends BaseTest {
     @Test
     public void getImageTest(){
 
-        EveryDayImage image = everyDayImageService.getEveryDayImageJSON();
-
-        image = everyDayImageService.getEveryDayImageData(image);
+        EveryDayImage image = everyDayImageService.downloadTodayImage();
 
         assertNotNull(image.getImageData());
     }

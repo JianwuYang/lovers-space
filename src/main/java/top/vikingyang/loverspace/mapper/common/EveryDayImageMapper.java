@@ -1,5 +1,6 @@
 package top.vikingyang.loverspace.mapper.common;
 
+import org.apache.ibatis.annotations.Param;
 import top.vikingyang.loverspace.entity.common.EveryDayImage;
 
 public interface EveryDayImageMapper {
@@ -17,4 +18,11 @@ public interface EveryDayImageMapper {
     int updateByPrimaryKeyWithBLOBs(EveryDayImage record);
 
     int updateByPrimaryKey(EveryDayImage record);
+
+    /**
+     * 查询当日数据
+     * @param today 当天日期
+     * @return 结果
+     */
+    EveryDayImage findTodayRecord(@Param("today") String today);
 }

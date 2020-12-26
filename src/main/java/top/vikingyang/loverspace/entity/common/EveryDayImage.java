@@ -15,7 +15,7 @@ public class EveryDayImage implements Serializable {
     /**
      * 开始时间
      */
-    private String startDate;
+    private String imageDate;
 
     /**
      * url
@@ -52,12 +52,12 @@ public class EveryDayImage implements Serializable {
         this.id = id;
     }
 
-    public String getStartDate() {
-        return startDate;
+    public String getImageDate() {
+        return imageDate;
     }
 
-    public void setStartDate(String startDate) {
-        this.startDate = startDate;
+    public void setImageDate(String imageDate) {
+        this.imageDate = imageDate;
     }
 
     public String getUrl() {
@@ -113,7 +113,7 @@ public class EveryDayImage implements Serializable {
         }
         EveryDayImage other = (EveryDayImage) that;
         return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
-            && (this.getStartDate() == null ? other.getStartDate() == null : this.getStartDate().equals(other.getStartDate()))
+            && (this.getImageDate() == null ? other.getImageDate() == null : this.getImageDate().equals(other.getImageDate()))
             && (this.getUrl() == null ? other.getUrl() == null : this.getUrl().equals(other.getUrl()))
             && (this.getCopyright() == null ? other.getCopyright() == null : this.getCopyright().equals(other.getCopyright()))
             && (this.getStatus() == null ? other.getStatus() == null : this.getStatus().equals(other.getStatus()))
@@ -126,7 +126,7 @@ public class EveryDayImage implements Serializable {
         final int prime = 31;
         int result = 1;
         result = prime * result + ((getId() == null) ? 0 : getId().hashCode());
-        result = prime * result + ((getStartDate() == null) ? 0 : getStartDate().hashCode());
+        result = prime * result + ((getImageDate() == null) ? 0 : getImageDate().hashCode());
         result = prime * result + ((getUrl() == null) ? 0 : getUrl().hashCode());
         result = prime * result + ((getCopyright() == null) ? 0 : getCopyright().hashCode());
         result = prime * result + ((getStatus() == null) ? 0 : getStatus().hashCode());
@@ -141,7 +141,7 @@ public class EveryDayImage implements Serializable {
                 " [" +
                 "Hash = " + hashCode() +
                 ", id=" + id +
-                ", startDate=" + startDate +
+                ", startDate=" + imageDate +
                 ", url=" + url +
                 ", copyright=" + copyright +
                 ", status=" + status +

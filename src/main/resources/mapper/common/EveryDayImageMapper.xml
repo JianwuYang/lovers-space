@@ -3,7 +3,7 @@
 <mapper namespace="top.vikingyang.loverspace.mapper.common.EveryDayImageMapper">
   <resultMap id="BaseResultMap" type="top.vikingyang.loverspace.entity.common.EveryDayImage">
     <id column="id" jdbcType="BIGINT" property="id" />
-    <result column="startDate" jdbcType="VARCHAR" property="startDate" />
+    <result column="imageDate" jdbcType="VARCHAR" property="imageDate" />
     <result column="url" jdbcType="VARCHAR" property="url" />
     <result column="copyright" jdbcType="VARCHAR" property="copyright" />
     <result column="status" jdbcType="VARCHAR" property="status" />
@@ -13,7 +13,7 @@
     <result column="imageData" jdbcType="BLOB" property="imageData" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, startDate, url, copyright, `status`, errorMsg
+    id, imageDate, url, copyright, `status`, errorMsg
   </sql>
   <sql id="Blob_Column_List">
     imageData
@@ -31,18 +31,18 @@
     where id = #{id,jdbcType=BIGINT}
   </delete>
   <insert id="insert" keyColumn="id" keyProperty="id" parameterType="top.vikingyang.loverspace.entity.common.EveryDayImage" useGeneratedKeys="true">
-    insert into everyDayImage (startDate, url, copyright,
+    insert into everyDayImage (imageDate, url, copyright,
       `status`, errorMsg, imageData
       )
-    values (#{startDate,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, #{copyright,jdbcType=VARCHAR},
+    values (#{imageDate,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, #{copyright,jdbcType=VARCHAR},
       #{status,jdbcType=VARCHAR}, #{errorMsg,jdbcType=VARCHAR}, #{imageData,jdbcType=BLOB}
       )
   </insert>
   <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="top.vikingyang.loverspace.entity.common.EveryDayImage" useGeneratedKeys="true">
     insert into everyDayImage
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="startDate != null">
-        startDate,
+      <if test="imageDate != null">
+        imageDate,
       </if>
       <if test="url != null">
         url,
@@ -61,8 +61,8 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="startDate != null">
-        #{startDate,jdbcType=VARCHAR},
+      <if test="imageDate != null">
+        #{imageDate,jdbcType=VARCHAR},
       </if>
       <if test="url != null">
         #{url,jdbcType=VARCHAR},
@@ -84,8 +84,8 @@
   <update id="updateByPrimaryKeySelective" parameterType="top.vikingyang.loverspace.entity.common.EveryDayImage">
     update everyDayImage
     <set>
-      <if test="startDate != null">
-        startDate = #{startDate,jdbcType=VARCHAR},
+      <if test="imageDate != null">
+        imageDate = #{imageDate,jdbcType=VARCHAR},
       </if>
       <if test="url != null">
         url = #{url,jdbcType=VARCHAR},
@@ -107,7 +107,7 @@
   </update>
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="top.vikingyang.loverspace.entity.common.EveryDayImage">
     update everyDayImage
-    set startDate = #{startDate,jdbcType=VARCHAR},
+    set imageDate = #{imageDate,jdbcType=VARCHAR},
       url = #{url,jdbcType=VARCHAR},
       copyright = #{copyright,jdbcType=VARCHAR},
       `status` = #{status,jdbcType=VARCHAR},
@@ -117,11 +117,16 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="top.vikingyang.loverspace.entity.common.EveryDayImage">
     update everyDayImage
-    set startDate = #{startDate,jdbcType=VARCHAR},
+    set imageDate = #{imageDate,jdbcType=VARCHAR},
       url = #{url,jdbcType=VARCHAR},
       copyright = #{copyright,jdbcType=VARCHAR},
       `status` = #{status,jdbcType=VARCHAR},
       errorMsg = #{errorMsg,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
+
+  <select id="findTodayRecord" resultType="top.vikingyang.loverspace.entity.common.EveryDayImage">
+    select <include refid="Base_Column_List"/>, <include refid="Blob_Column_List"/>
+    from everyDayImage where imageDate = #{today} and status = 'SUCCESS'
+  </select>
 </mapper>

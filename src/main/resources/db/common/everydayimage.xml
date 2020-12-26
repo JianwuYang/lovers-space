@@ -10,7 +10,7 @@
             <column name="id" type="bigint" autoIncrement="true" remarks="主键">
                 <constraints nullable="false" primaryKey="true" />
             </column>
-            <column name="startDate" type="varchar(8)" remarks="开始时间">
+            <column name="imageDate" type="varchar(8)" remarks="开始时间">
                 <constraints nullable="false"/>
             </column>
             <column name="url" type="varchar(255)" remarks="url">
@@ -23,5 +23,8 @@
             <column name="status" type="varchar(20)" remarks="状态"/>
             <column name="errorMsg" type="longtext" remarks="错误消息"/>
         </createTable>
+        <createIndex tableName="everyDayImage" indexName="everyDayImage_imageDate">
+            <column name="imageDate"/>
+        </createIndex>
     </changeSet>
 </databaseChangeLog>

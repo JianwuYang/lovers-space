@@ -1,5 +1,6 @@
 package top.vikingyang.loverspace.service.common;
 
+import org.apache.ibatis.annotations.Param;
 import top.vikingyang.loverspace.entity.common.EveryDayImage;
 
 public interface EveryDayImageService {
@@ -19,14 +20,23 @@ public interface EveryDayImageService {
     int updateByPrimaryKey(EveryDayImage record);
 
     /**
-     * 每日图片JSON获取
-     * @return 数据
+     * 对外暴露借口每日图片下载
+     *
+     * @return 结果
      */
-    EveryDayImage getEveryDayImageJSON();
+    public EveryDayImage downloadTodayImage();
 
     /**
-     * 每日图片数据获取
-     * @param image 数据
+     * 检查是否已经存在当日的图片数据
+     *
+     * @return 是/否
      */
-    EveryDayImage getEveryDayImageData(EveryDayImage image);
+    public boolean checkHasTodayImage();
+
+    /**
+     * 查询当日数据
+     *
+     * @return 结果
+     */
+    EveryDayImage findTodayRecord();
 }
