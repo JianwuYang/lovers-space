@@ -9,4 +9,6 @@ public interface CustomJob extends Job {
     void execute(JobExecutionContext var1) throws JobExecutionException;
 
     String getCorn();
+
+    boolean isEnabled();
 }

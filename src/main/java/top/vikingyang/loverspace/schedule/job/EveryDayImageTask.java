@@ -23,8 +23,11 @@ public class EveryDayImageTask implements CustomJob {
         this.everyDayImageService = everyDayImageService;
     }
 
-    @Value("${schedule.everyDayImage}")
+    @Value("${schedule.every-day-image}")
     private String corn;
+
+    @Value("${schedule.every-day-image-enabled}")
+    private boolean enabled;
 
     @Override
     public void execute(JobExecutionContext var1) throws JobExecutionException {
@@ -42,5 +45,10 @@ public class EveryDayImageTask implements CustomJob {
     @Override
     public String getCorn() {
         return corn;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return enabled;
     }
 }

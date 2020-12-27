@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+	  http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="1" author="Viking">
+        <createTable tableName="user">
+            <column name="id" type="bigint" autoIncrement="true" remarks="主键">
+                <constraints nullable="false" primaryKey="true" />
+            </column>
+            <column name="login_name" type="varchar(55)" remarks="登录名">
+                <constraints nullable="false"/>
+            </column>
+            <column name="pass_word" type="varchar(255)" remarks="密码HASH">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_name" type="varchar(55)" remarks="用户名">
+                <constraints nullable="false"/>
+            </column>
+            <column name="phone" type="varchar(255)" remarks="手机号"/>
+            <column name="role" type="varchar(255)" remarks="角色">
+                <constraints nullable="false"/>
+            </column>
+            <column name="relationship_id" type="bigint" remarks="关系ID"/>
+
+            <column name="deleted" type="bit" remarks="删除" defaultValue="0">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creator" type="varchar(55)" remarks="创建人"/>
+            <column name="updater" type="varchar(55)" remarks="更新人"/>
+            <column name="create_time" type="datetime" remarks="创建时间"/>
+            <column name="update_time" type="datetime" remarks="更新时间"/>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>
