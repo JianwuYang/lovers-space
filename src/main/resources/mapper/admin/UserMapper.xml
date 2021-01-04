@@ -9,6 +9,7 @@
     <result column="phone" jdbcType="VARCHAR" property="phone" />
     <result column="role" jdbcType="VARCHAR" property="role" />
     <result column="relationship_id" jdbcType="BIGINT" property="relationshipId" />
+    <result column="enabled" jdbcType="BIT" property="enabled" />
     <result column="deleted" jdbcType="BIT" property="deleted" />
     <result column="creator" jdbcType="VARCHAR" property="creator" />
     <result column="updater" jdbcType="VARCHAR" property="updater" />
@@ -16,8 +17,8 @@
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, login_name, pass_word, user_name, phone, `role`, relationship_id, deleted, creator, 
-    updater, create_time, update_time
+    id, login_name, pass_word, user_name, phone, `role`, relationship_id, enabled, deleted, 
+    creator, updater, create_time, update_time
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
@@ -32,12 +33,14 @@
   <insert id="insert" keyColumn="id" keyProperty="id" parameterType="top.vikingyang.loverspace.entity.admin.User" useGeneratedKeys="true">
     insert into user (login_name, pass_word, user_name, 
       phone, `role`, relationship_id, 
-      deleted, creator, updater, 
-      create_time, update_time)
+      enabled, deleted, creator, 
+      updater, create_time, update_time
+      )
     values (#{loginName,jdbcType=VARCHAR}, #{passWord,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, 
       #{phone,jdbcType=VARCHAR}, #{role,jdbcType=VARCHAR}, #{relationshipId,jdbcType=BIGINT}, 
-      #{deleted,jdbcType=BIT}, #{creator,jdbcType=VARCHAR}, #{updater,jdbcType=VARCHAR}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+      #{enabled,jdbcType=BIT}, #{deleted,jdbcType=BIT}, #{creator,jdbcType=VARCHAR}, 
+      #{updater,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
+      )
   </insert>
   <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="top.vikingyang.loverspace.entity.admin.User" useGeneratedKeys="true">
     insert into user
@@ -59,6 +62,9 @@
       </if>
       <if test="relationshipId != null">
         relationship_id,
+      </if>
+      <if test="enabled != null">
+        enabled,
       </if>
       <if test="deleted != null">
         deleted,
@@ -94,6 +100,9 @@
       </if>
       <if test="relationshipId != null">
         #{relationshipId,jdbcType=BIGINT},
+      </if>
+      <if test="enabled != null">
+        #{enabled,jdbcType=BIT},
       </if>
       <if test="deleted != null">
         #{deleted,jdbcType=BIT},
@@ -133,6 +142,9 @@
       <if test="relationshipId != null">
         relationship_id = #{relationshipId,jdbcType=BIGINT},
       </if>
+      <if test="enabled != null">
+        enabled = #{enabled,jdbcType=BIT},
+      </if>
       <if test="deleted != null">
         deleted = #{deleted,jdbcType=BIT},
       </if>
@@ -159,6 +171,7 @@
       phone = #{phone,jdbcType=VARCHAR},
       `role` = #{role,jdbcType=VARCHAR},
       relationship_id = #{relationshipId,jdbcType=BIGINT},
+      enabled = #{enabled,jdbcType=BIT},
       deleted = #{deleted,jdbcType=BIT},
       creator = #{creator,jdbcType=VARCHAR},
       updater = #{updater,jdbcType=VARCHAR},
@@ -166,4 +179,12 @@
       update_time = #{updateTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=BIGINT}
   </update>
+  <select id="findByUserName" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from user
+    where user_name = #{userName,jdbcType=VARCHAR}
+    and deleted = 0
+  </select>
+
 </mapper>

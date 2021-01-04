@@ -8,6 +8,8 @@ spring:
     change-log: classpath:db/changelog.xml
   quartz:
     job-store-type: memory
+  messages:
+    basename: i18n/messages
 
 mybatis:
   mapper-locations: classpath:mapper/**/*.xml
@@ -19,4 +21,4 @@ schedule:
 
 
 server:
-  port: 9000
+  port: 8090

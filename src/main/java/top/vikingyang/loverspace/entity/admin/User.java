@@ -1,5 +1,7 @@
 package top.vikingyang.loverspace.entity.admin;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -18,6 +20,7 @@ public class User implements Serializable {
     /**
      * 密码HASH
      */
+    @JsonIgnore
     private String passWord;
 
     /**
@@ -39,6 +42,11 @@ public class User implements Serializable {
      * 关系ID
      */
     private Long relationshipId;
+
+    /**
+     * 已启用
+     */
+    private Boolean enabled;
 
     /**
      * 删除
@@ -123,6 +131,14 @@ public class User implements Serializable {
         this.relationshipId = relationshipId;
     }
 
+    public Boolean getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
+    }
+
     public Boolean getDeleted() {
         return deleted;
     }
@@ -182,6 +198,7 @@ public class User implements Serializable {
             && (this.getPhone() == null ? other.getPhone() == null : this.getPhone().equals(other.getPhone()))
             && (this.getRole() == null ? other.getRole() == null : this.getRole().equals(other.getRole()))
             && (this.getRelationshipId() == null ? other.getRelationshipId() == null : this.getRelationshipId().equals(other.getRelationshipId()))
+            && (this.getEnabled() == null ? other.getEnabled() == null : this.getEnabled().equals(other.getEnabled()))
             && (this.getDeleted() == null ? other.getDeleted() == null : this.getDeleted().equals(other.getDeleted()))
             && (this.getCreator() == null ? other.getCreator() == null : this.getCreator().equals(other.getCreator()))
             && (this.getUpdater() == null ? other.getUpdater() == null : this.getUpdater().equals(other.getUpdater()))
@@ -200,6 +217,7 @@ public class User implements Serializable {
         result = prime * result + ((getPhone() == null) ? 0 : getPhone().hashCode());
         result = prime * result + ((getRole() == null) ? 0 : getRole().hashCode());
         result = prime * result + ((getRelationshipId() == null) ? 0 : getRelationshipId().hashCode());
+        result = prime * result + ((getEnabled() == null) ? 0 : getEnabled().hashCode());
         result = prime * result + ((getDeleted() == null) ? 0 : getDeleted().hashCode());
         result = prime * result + ((getCreator() == null) ? 0 : getCreator().hashCode());
         result = prime * result + ((getUpdater() == null) ? 0 : getUpdater().hashCode());
@@ -221,6 +239,7 @@ public class User implements Serializable {
         sb.append(", phone=").append(phone);
         sb.append(", role=").append(role);
         sb.append(", relationshipId=").append(relationshipId);
+        sb.append(", enabled=").append(enabled);
         sb.append(", deleted=").append(deleted);
         sb.append(", creator=").append(creator);
         sb.append(", updater=").append(updater);

@@ -1,34 +1,21 @@
-import Vue from 'vue'
-import Router from "vue-router";
+import { createRouter, createWebHashHistory } from 'vue-router'
+import Layout from '@/layout'
+import Login from '@/views/login'
 
-Vue.use(Router);
-
-export const constantRoutes = [
+const constantRoutes = [
+    {
+        path: '/',
+        component: Layout,
+    },
     {
         path: '/login',
-        component: () => import('@/views/login/index'),
-    },
-    {
-        path: '/dashboard',
-        component: () => import('@/views/dashboard/index')
-    },
-    {
-        path: "/",
-        redirect: '/dashboard'
+        component: Login
     }
 ]
 
-
-const createRouter = () => new Router({
-    routes: constantRoutes
+const router = createRouter({
+    history: createWebHashHistory(),
+    routes: constantRoutes,
 })
-
-const router = createRouter()
-
-// Detail see: https://github.com/vuejs/vue-router/issues/1234#issuecomment-357941465
-export function resetRouter() {
-    const newRouter = createRouter()
-    router.matcher = newRouter.matcher // reset router
-}
 
 export default router

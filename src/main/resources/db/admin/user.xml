@@ -24,6 +24,9 @@
                 <constraints nullable="false"/>
             </column>
             <column name="relationship_id" type="bigint" remarks="关系ID"/>
+            <column name="enabled" type="bit" remarks="已启用" defaultValue="1">
+                <constraints nullable="true"/>
+            </column>
 
             <column name="deleted" type="bit" remarks="删除" defaultValue="0">
                 <constraints nullable="false"/>
@@ -33,6 +36,16 @@
             <column name="create_time" type="datetime" remarks="创建时间"/>
             <column name="update_time" type="datetime" remarks="更新时间"/>
         </createTable>
+    </changeSet>
+
+    <changeSet id="2" author="Viking">
+        <sqlFile path="user.data"
+                 encoding="utf8"
+                 dbms="mysql"
+                 relativeToChangelogFile="true"
+                 splitStatements="true"
+                 stripComments="true"
+        />
     </changeSet>
 
 </databaseChangeLog>

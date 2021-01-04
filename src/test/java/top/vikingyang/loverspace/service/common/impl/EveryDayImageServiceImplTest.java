@@ -2,6 +2,7 @@ package top.vikingyang.loverspace.service.common.impl;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import top.vikingyang.loverspace.entity.common.EveryDayImage;
 import top.vikingyang.loverspace.service.BaseTest;
 import top.vikingyang.loverspace.service.common.EveryDayImageService;
@@ -13,15 +14,13 @@ class EveryDayImageServiceImplTest extends BaseTest {
     @Autowired
     private EveryDayImageService everyDayImageService;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
 
     @Test
     public void test(){
-        EveryDayImage image = new EveryDayImage();
-        image.setImageDate("20200101");
-        image.setCopyright("Copyright Test");
-        image.setUrl("/testUrl");
-        int i = everyDayImageService.insertSelective(image);
-        assertEquals(i, 1);
+        String a = passwordEncoder.encode("admin");
     }
 
     @Test

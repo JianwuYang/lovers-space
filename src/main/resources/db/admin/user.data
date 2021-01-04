@@ -1,0 +1,1 @@
+INSERT INTO `user`(`id`, `login_name`, `pass_word`, `user_name`, `phone`, `role`, `relationship_id`, `enabled`, `deleted`, `creator`, `updater`, `create_time`, `update_time`) VALUES (1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin', '18395586516', 'ADMIN', NULL, b'1', b'0', 'admin', 'admin', '2020-12-27 20:23:38', '2020-12-27 20:23:42');
