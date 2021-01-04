@@ -28,6 +28,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private MyAuthSuccessHandler myAuthSuccessHandler;
 
+    @Autowired
+    private MyLogoutSuccessHandler myLogoutSuccessHandler;
+
     @Bean
     PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
@@ -55,6 +58,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .and()
                 .logout()
+                .logoutUrl("/rest/logout")
+                .logoutSuccessHandler(myLogoutSuccessHandler)
                 .permitAll();
 
     }
