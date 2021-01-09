@@ -21,7 +21,9 @@ public class QuartzStartUp {
     public QuartzStartUp(Scheduler scheduler, ApplicationContext context){
         Map<String, CustomJob> jobMap = context.getBeansOfType(CustomJob.class);
         jobMap.forEach((name, job) -> {
-            this.addJobAndTrigger(name, job, scheduler);
+            if(job.isEnabled()){
+                this.addJobAndTrigger(name, job, scheduler);
+            }
         });
     }
 
