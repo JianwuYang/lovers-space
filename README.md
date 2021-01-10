@@ -1,2 +1,2 @@
-# lovers-space
-lovers-space use vue and springboot
+# loving-lambs
+loving-lambs use springboot

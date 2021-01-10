@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="top.vikingyang.loverspace.mapper.lovers.MissingComboMapper">
-  <resultMap id="BaseResultMap" type="top.vikingyang.loverspace.entity.lovers.MissingCombo">
+<mapper namespace="top.vikingyang.lovinglambs.mapper.lovers.MissingComboMapper">
+  <resultMap id="BaseResultMap" type="top.vikingyang.lovinglambs.entity.lovers.MissingCombo">
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="lamb_id" jdbcType="BIGINT" property="lambId" />
     <result column="missing_date" jdbcType="VARCHAR" property="missingDate" />
@@ -20,13 +20,13 @@
     delete from missingcombo
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="top.vikingyang.loverspace.entity.lovers.MissingCombo" useGeneratedKeys="true">
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="top.vikingyang.lovinglambs.entity.lovers.MissingCombo" useGeneratedKeys="true">
     insert into missingcombo (lamb_id, missing_date, combo
       )
     values (#{lambId,jdbcType=BIGINT}, #{missingDate,jdbcType=VARCHAR}, #{combo,jdbcType=INTEGER}
       )
   </insert>
-  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="top.vikingyang.loverspace.entity.lovers.MissingCombo" useGeneratedKeys="true">
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="top.vikingyang.lovinglambs.entity.lovers.MissingCombo" useGeneratedKeys="true">
     insert into missingcombo
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="lambId != null">
@@ -51,7 +51,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="top.vikingyang.loverspace.entity.lovers.MissingCombo">
+  <update id="updateByPrimaryKeySelective" parameterType="top.vikingyang.lovinglambs.entity.lovers.MissingCombo">
     update missingcombo
     <set>
       <if test="lambId != null">
@@ -66,7 +66,7 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="top.vikingyang.loverspace.entity.lovers.MissingCombo">
+  <update id="updateByPrimaryKey" parameterType="top.vikingyang.lovinglambs.entity.lovers.MissingCombo">
     update missingcombo
     set lamb_id = #{lambId,jdbcType=BIGINT},
       missing_date = #{missingDate,jdbcType=VARCHAR},

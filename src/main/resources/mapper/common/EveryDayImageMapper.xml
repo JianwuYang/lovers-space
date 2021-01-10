@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="top.vikingyang.loverspace.mapper.common.EveryDayImageMapper">
-  <resultMap id="BaseResultMap" type="top.vikingyang.loverspace.entity.common.EveryDayImage">
+<mapper namespace="top.vikingyang.lovinglambs.mapper.common.EveryDayImageMapper">
+  <resultMap id="BaseResultMap" type="top.vikingyang.lovinglambs.entity.common.EveryDayImage">
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="imageDate" jdbcType="VARCHAR" property="imageDate" />
     <result column="url" jdbcType="VARCHAR" property="url" />
@@ -9,7 +9,7 @@
     <result column="status" jdbcType="VARCHAR" property="status" />
     <result column="errorMsg" jdbcType="VARCHAR" property="errorMsg" />
   </resultMap>
-  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="top.vikingyang.loverspace.entity.common.EveryDayImage">
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="top.vikingyang.lovinglambs.entity.common.EveryDayImage">
     <result column="imageData" jdbcType="BLOB" property="imageData" />
   </resultMap>
   <sql id="Base_Column_List">
@@ -30,7 +30,7 @@
     delete from everyDayImage
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="top.vikingyang.loverspace.entity.common.EveryDayImage" useGeneratedKeys="true">
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="top.vikingyang.lovinglambs.entity.common.EveryDayImage" useGeneratedKeys="true">
     insert into everyDayImage (imageDate, url, copyright,
       `status`, errorMsg, imageData
       )
@@ -38,7 +38,7 @@
       #{status,jdbcType=VARCHAR}, #{errorMsg,jdbcType=VARCHAR}, #{imageData,jdbcType=BLOB}
       )
   </insert>
-  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="top.vikingyang.loverspace.entity.common.EveryDayImage" useGeneratedKeys="true">
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="top.vikingyang.lovinglambs.entity.common.EveryDayImage" useGeneratedKeys="true">
     insert into everyDayImage
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="imageDate != null">
@@ -81,7 +81,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="top.vikingyang.loverspace.entity.common.EveryDayImage">
+  <update id="updateByPrimaryKeySelective" parameterType="top.vikingyang.lovinglambs.entity.common.EveryDayImage">
     update everyDayImage
     <set>
       <if test="imageDate != null">
@@ -105,7 +105,7 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="top.vikingyang.loverspace.entity.common.EveryDayImage">
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="top.vikingyang.lovinglambs.entity.common.EveryDayImage">
     update everyDayImage
     set imageDate = #{imageDate,jdbcType=VARCHAR},
       url = #{url,jdbcType=VARCHAR},
@@ -115,7 +115,7 @@
       imageData = #{imageData,jdbcType=BLOB}
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="top.vikingyang.loverspace.entity.common.EveryDayImage">
+  <update id="updateByPrimaryKey" parameterType="top.vikingyang.lovinglambs.entity.common.EveryDayImage">
     update everyDayImage
     set imageDate = #{imageDate,jdbcType=VARCHAR},
       url = #{url,jdbcType=VARCHAR},
@@ -125,7 +125,7 @@
     where id = #{id,jdbcType=BIGINT}
   </update>
 
-  <select id="findTodayRecord" resultType="top.vikingyang.loverspace.entity.common.EveryDayImage">
+  <select id="findTodayRecord" resultType="top.vikingyang.lovinglambs.entity.common.EveryDayImage">
     select <include refid="Base_Column_List"/>, <include refid="Blob_Column_List"/>
     from everyDayImage where imageDate = #{today} and status = 'SUCCESS'
   </select>

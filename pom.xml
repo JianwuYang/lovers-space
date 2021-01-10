@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>top.vikingyang</groupId>
-    <artifactId>lovers-space</artifactId>
+    <artifactId>loving-lambs</artifactId>
     <version>0.0.1</version>
-    <name>lovers-space</name>
-    <description>lovers-space</description>
+    <name>loving-lambs</name>
+    <description>loving-lambs</description>
 
     <properties>
         <java.version>11</java.version>
