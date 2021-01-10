@@ -1,6 +1,5 @@
 package top.vikingyang.loverspace.service.lovers.impl;
 
-import liquibase.pro.packaged.A;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import top.vikingyang.loverspace.entity.lovers.Lamb;

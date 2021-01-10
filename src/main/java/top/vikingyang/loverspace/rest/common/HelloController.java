@@ -1,4 +1,4 @@
-package top.vikingyang.loverspace.rest;
+package top.vikingyang.loverspace.rest.common;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

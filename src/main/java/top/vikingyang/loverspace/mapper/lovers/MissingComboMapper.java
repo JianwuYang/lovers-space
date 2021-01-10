@@ -14,4 +14,6 @@ public interface MissingComboMapper {
     int updateByPrimaryKeySelective(MissingCombo record);
 
     int updateByPrimaryKey(MissingCombo record);
+
+    MissingCombo findByLambId(Long lambId);
 }

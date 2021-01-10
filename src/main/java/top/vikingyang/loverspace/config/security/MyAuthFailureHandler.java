@@ -7,7 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
 import org.springframework.stereotype.Component;
-import top.vikingyang.loverspace.entity.CommonResult;
+import top.vikingyang.loverspace.entity.common.CommonResult;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -26,7 +26,7 @@ public class MyAuthFailureHandler extends SimpleUrlAuthenticationFailureHandler 
 
         response.setStatus(HttpStatus.UNAUTHORIZED.value());
         String msg = messageSource.getMessage(exception.getMessage(), null, Locale.CHINA);
-        CommonResult<?> result = new CommonResult<>(HttpStatus.UNAUTHORIZED.value(), msg);
+        CommonResult<?> result = new CommonResult<>(0, msg);
         response.setCharacterEncoding("UTF-8");
         response.getWriter().print(JSON.toJSONString(result));
         response.getWriter().flush();

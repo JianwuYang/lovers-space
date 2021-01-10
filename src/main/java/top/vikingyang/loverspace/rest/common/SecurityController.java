@@ -1,11 +1,11 @@
-package top.vikingyang.loverspace.rest;
+package top.vikingyang.loverspace.rest.common;
 
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import top.vikingyang.loverspace.config.security.MyUserDetails;
-import top.vikingyang.loverspace.entity.CommonResult;
+import top.vikingyang.loverspace.entity.common.CommonResult;
 
 @RestController
 public class SecurityController {

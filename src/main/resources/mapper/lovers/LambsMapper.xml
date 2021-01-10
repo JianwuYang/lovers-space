@@ -4,6 +4,8 @@
   <resultMap id="BaseResultMap" type="top.vikingyang.loverspace.entity.lovers.Lamb">
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="fold_id" jdbcType="BIGINT" property="foldId" />
+    <result column="deleted" jdbcType="BIT" property="deleted" />
     <result column="pet_name" jdbcType="VARCHAR" property="petName" />
     <result column="creator" jdbcType="VARCHAR" property="creator" />
     <result column="updater" jdbcType="VARCHAR" property="updater" />
@@ -11,7 +13,7 @@
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, user_id, pet_name, creator, updater, create_time, update_time
+    id, user_id, fold_id, deleted, pet_name, creator, updater, create_time, update_time
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
@@ -24,18 +26,24 @@
     where id = #{id,jdbcType=BIGINT}
   </delete>
   <insert id="insert" keyColumn="id" keyProperty="id" parameterType="top.vikingyang.loverspace.entity.lovers.Lamb" useGeneratedKeys="true">
-    insert into lambs (user_id, pet_name, creator, 
-      updater, create_time, update_time
-      )
-    values (#{userId,jdbcType=BIGINT}, #{petName,jdbcType=VARCHAR}, #{creator,jdbcType=VARCHAR}, 
-      #{updater,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
-      )
+    insert into lambs (user_id, fold_id, deleted, 
+      pet_name, creator, updater, 
+      create_time, update_time)
+    values (#{userId,jdbcType=BIGINT}, #{foldId,jdbcType=BIGINT}, #{deleted,jdbcType=BIT}, 
+      #{petName,jdbcType=VARCHAR}, #{creator,jdbcType=VARCHAR}, #{updater,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="top.vikingyang.loverspace.entity.lovers.Lamb" useGeneratedKeys="true">
     insert into lambs
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="userId != null">
         user_id,
+      </if>
+      <if test="foldId != null">
+        fold_id,
+      </if>
+      <if test="deleted != null">
+        deleted,
       </if>
       <if test="petName != null">
         pet_name,
@@ -56,6 +64,12 @@
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="userId != null">
         #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="foldId != null">
+        #{foldId,jdbcType=BIGINT},
+      </if>
+      <if test="deleted != null">
+        #{deleted,jdbcType=BIT},
       </if>
       <if test="petName != null">
         #{petName,jdbcType=VARCHAR},
@@ -80,6 +94,12 @@
       <if test="userId != null">
         user_id = #{userId,jdbcType=BIGINT},
       </if>
+      <if test="foldId != null">
+        fold_id = #{foldId,jdbcType=BIGINT},
+      </if>
+      <if test="deleted != null">
+        deleted = #{deleted,jdbcType=BIT},
+      </if>
       <if test="petName != null">
         pet_name = #{petName,jdbcType=VARCHAR},
       </if>
@@ -101,6 +121,8 @@
   <update id="updateByPrimaryKey" parameterType="top.vikingyang.loverspace.entity.lovers.Lamb">
     update lambs
     set user_id = #{userId,jdbcType=BIGINT},
+      fold_id = #{foldId,jdbcType=BIGINT},
+      deleted = #{deleted,jdbcType=BIT},
       pet_name = #{petName,jdbcType=VARCHAR},
       creator = #{creator,jdbcType=VARCHAR},
       updater = #{updater,jdbcType=VARCHAR},

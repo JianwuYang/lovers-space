@@ -16,6 +16,16 @@ public class Lamb implements Serializable {
     private Long userId;
 
     /**
+     * 羊圈ID
+     */
+    private Long foldId;
+
+    /**
+     * 删除
+     */
+    private Boolean deleted;
+
+    /**
      * 爱称
      */
     private String petName;
@@ -56,6 +66,22 @@ public class Lamb implements Serializable {
 
     public void setUserId(Long userId) {
         this.userId = userId;
+    }
+
+    public Long getFoldId() {
+        return foldId;
+    }
+
+    public void setFoldId(Long foldId) {
+        this.foldId = foldId;
+    }
+
+    public Boolean getDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(Boolean deleted) {
+        this.deleted = deleted;
     }
 
     public String getPetName() {
@@ -112,6 +138,8 @@ public class Lamb implements Serializable {
         Lamb other = (Lamb) that;
         return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
             && (this.getUserId() == null ? other.getUserId() == null : this.getUserId().equals(other.getUserId()))
+            && (this.getFoldId() == null ? other.getFoldId() == null : this.getFoldId().equals(other.getFoldId()))
+            && (this.getDeleted() == null ? other.getDeleted() == null : this.getDeleted().equals(other.getDeleted()))
             && (this.getPetName() == null ? other.getPetName() == null : this.getPetName().equals(other.getPetName()))
             && (this.getCreator() == null ? other.getCreator() == null : this.getCreator().equals(other.getCreator()))
             && (this.getUpdater() == null ? other.getUpdater() == null : this.getUpdater().equals(other.getUpdater()))
@@ -125,6 +153,8 @@ public class Lamb implements Serializable {
         int result = 1;
         result = prime * result + ((getId() == null) ? 0 : getId().hashCode());
         result = prime * result + ((getUserId() == null) ? 0 : getUserId().hashCode());
+        result = prime * result + ((getFoldId() == null) ? 0 : getFoldId().hashCode());
+        result = prime * result + ((getDeleted() == null) ? 0 : getDeleted().hashCode());
         result = prime * result + ((getPetName() == null) ? 0 : getPetName().hashCode());
         result = prime * result + ((getCreator() == null) ? 0 : getCreator().hashCode());
         result = prime * result + ((getUpdater() == null) ? 0 : getUpdater().hashCode());
@@ -141,6 +171,8 @@ public class Lamb implements Serializable {
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
         sb.append(", userId=").append(userId);
+        sb.append(", foldId=").append(foldId);
+        sb.append(", deleted=").append(deleted);
         sb.append(", petName=").append(petName);
         sb.append(", creator=").append(creator);
         sb.append(", updater=").append(updater);

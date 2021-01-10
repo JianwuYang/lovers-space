@@ -73,4 +73,12 @@
       combo = #{combo,jdbcType=INTEGER}
     where id = #{id,jdbcType=BIGINT}
   </update>
+
+  <select id="findByLambId" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from missingcombo
+    where lamb_id = #{lambId,jdbcType=BIGINT}
+    order by missing_date desc limit 1
+  </select>
 </mapper>

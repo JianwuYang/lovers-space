@@ -1,4 +1,4 @@
-package top.vikingyang.loverspace.entity;
+package top.vikingyang.loverspace.entity.common;
 
 public class CommonResult<T> {
 
@@ -7,7 +7,8 @@ public class CommonResult<T> {
 
     private T data;
 
-    private int code;
+    //0 失败 1 成功
+    private int code = 1;
 
     public CommonResult() {
     }
@@ -30,6 +31,10 @@ public class CommonResult<T> {
 
     public CommonResult(String msg) {
         this.msg = msg;
+    }
+
+    public CommonResult(T data){
+        this.data = data;
     }
 
     public String getMsg() {
