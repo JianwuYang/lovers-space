@@ -16,14 +16,13 @@
             <column name="pass_word" type="varchar(255)" remarks="密码HASH">
                 <constraints nullable="false"/>
             </column>
-            <column name="user_name" type="varchar(55)" remarks="用户名">
+            <column name="user_name" type="varchar(255)" remarks="用户名">
                 <constraints nullable="false"/>
             </column>
             <column name="phone" type="varchar(255)" remarks="手机号"/>
             <column name="role" type="varchar(255)" remarks="角色">
                 <constraints nullable="false"/>
             </column>
-            <column name="relationship_id" type="bigint" remarks="关系ID"/>
             <column name="enabled" type="bit" remarks="已启用" defaultValue="1">
                 <constraints nullable="true"/>
             </column>
@@ -31,8 +30,8 @@
             <column name="deleted" type="bit" remarks="删除" defaultValue="0">
                 <constraints nullable="false"/>
             </column>
-            <column name="creator" type="varchar(55)" remarks="创建人"/>
-            <column name="updater" type="varchar(55)" remarks="更新人"/>
+            <column name="creator" type="varchar(255)" remarks="创建人"/>
+            <column name="updater" type="varchar(255)" remarks="更新人"/>
             <column name="create_time" type="datetime" remarks="创建时间"/>
             <column name="update_time" type="datetime" remarks="更新时间"/>
         </createTable>

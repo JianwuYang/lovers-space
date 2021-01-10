@@ -6,14 +6,14 @@
 	  http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
     <changeSet id="1" author="Viking">
-        <createTable tableName="relationship">
+        <createTable tableName="sheepfold">
             <column name="id" type="bigint" autoIncrement="true" remarks="主键">
                 <constraints nullable="false" primaryKey="true" />
             </column>
-            <column name="initiator_id" type="bigint" remarks="发起者ID"/>
-            <column name="invitees_id" type="bigint" remarks="被邀请者ID"/>
             <column name="love_time" type="datetime" remarks="相恋时间"/>
-
+            <column name="deleted" type="bit" remarks="删除" defaultValue="0">
+                <constraints nullable="false"/>
+            </column>
             <column name="creator" type="varchar(55)" remarks="创建人"/>
             <column name="updater" type="varchar(55)" remarks="更新人"/>
             <column name="create_time" type="datetime" remarks="创建时间"/>

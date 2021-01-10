@@ -1,48 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="top.vikingyang.loverspace.mapper.lovers.RelationshipMapper">
-  <resultMap id="BaseResultMap" type="top.vikingyang.loverspace.entity.lovers.Relationship">
+<mapper namespace="top.vikingyang.loverspace.mapper.lovers.LambsMapper">
+  <resultMap id="BaseResultMap" type="top.vikingyang.loverspace.entity.lovers.Lamb">
     <id column="id" jdbcType="BIGINT" property="id" />
-    <result column="initiator_id" jdbcType="BIGINT" property="initiatorId" />
-    <result column="invitees_id" jdbcType="BIGINT" property="inviteesId" />
-    <result column="love_time" jdbcType="TIMESTAMP" property="loveTime" />
+    <result column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="pet_name" jdbcType="VARCHAR" property="petName" />
     <result column="creator" jdbcType="VARCHAR" property="creator" />
     <result column="updater" jdbcType="VARCHAR" property="updater" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, initiator_id, invitees_id, love_time, creator, updater, create_time, update_time
+    id, user_id, pet_name, creator, updater, create_time, update_time
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from relationship
+    from lambs
     where id = #{id,jdbcType=BIGINT}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from relationship
+    delete from lambs
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="top.vikingyang.loverspace.entity.lovers.Relationship" useGeneratedKeys="true">
-    insert into relationship (initiator_id, invitees_id, love_time, 
-      creator, updater, create_time, 
-      update_time)
-    values (#{initiatorId,jdbcType=BIGINT}, #{inviteesId,jdbcType=BIGINT}, #{loveTime,jdbcType=TIMESTAMP}, 
-      #{creator,jdbcType=VARCHAR}, #{updater,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{updateTime,jdbcType=TIMESTAMP})
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="top.vikingyang.loverspace.entity.lovers.Lamb" useGeneratedKeys="true">
+    insert into lambs (user_id, pet_name, creator, 
+      updater, create_time, update_time
+      )
+    values (#{userId,jdbcType=BIGINT}, #{petName,jdbcType=VARCHAR}, #{creator,jdbcType=VARCHAR}, 
+      #{updater,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
+      )
   </insert>
-  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="top.vikingyang.loverspace.entity.lovers.Relationship" useGeneratedKeys="true">
-    insert into relationship
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="top.vikingyang.loverspace.entity.lovers.Lamb" useGeneratedKeys="true">
+    insert into lambs
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="initiatorId != null">
-        initiator_id,
+      <if test="userId != null">
+        user_id,
       </if>
-      <if test="inviteesId != null">
-        invitees_id,
-      </if>
-      <if test="loveTime != null">
-        love_time,
+      <if test="petName != null">
+        pet_name,
       </if>
       <if test="creator != null">
         creator,
@@ -58,14 +54,11 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="initiatorId != null">
-        #{initiatorId,jdbcType=BIGINT},
+      <if test="userId != null">
+        #{userId,jdbcType=BIGINT},
       </if>
-      <if test="inviteesId != null">
-        #{inviteesId,jdbcType=BIGINT},
-      </if>
-      <if test="loveTime != null">
-        #{loveTime,jdbcType=TIMESTAMP},
+      <if test="petName != null">
+        #{petName,jdbcType=VARCHAR},
       </if>
       <if test="creator != null">
         #{creator,jdbcType=VARCHAR},
@@ -81,17 +74,14 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="top.vikingyang.loverspace.entity.lovers.Relationship">
-    update relationship
+  <update id="updateByPrimaryKeySelective" parameterType="top.vikingyang.loverspace.entity.lovers.Lamb">
+    update lambs
     <set>
-      <if test="initiatorId != null">
-        initiator_id = #{initiatorId,jdbcType=BIGINT},
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=BIGINT},
       </if>
-      <if test="inviteesId != null">
-        invitees_id = #{inviteesId,jdbcType=BIGINT},
-      </if>
-      <if test="loveTime != null">
-        love_time = #{loveTime,jdbcType=TIMESTAMP},
+      <if test="petName != null">
+        pet_name = #{petName,jdbcType=VARCHAR},
       </if>
       <if test="creator != null">
         creator = #{creator,jdbcType=VARCHAR},
@@ -108,11 +98,10 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="top.vikingyang.loverspace.entity.lovers.Relationship">
-    update relationship
-    set initiator_id = #{initiatorId,jdbcType=BIGINT},
-      invitees_id = #{inviteesId,jdbcType=BIGINT},
-      love_time = #{loveTime,jdbcType=TIMESTAMP},
+  <update id="updateByPrimaryKey" parameterType="top.vikingyang.loverspace.entity.lovers.Lamb">
+    update lambs
+    set user_id = #{userId,jdbcType=BIGINT},
+      pet_name = #{petName,jdbcType=VARCHAR},
       creator = #{creator,jdbcType=VARCHAR},
       updater = #{updater,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP},

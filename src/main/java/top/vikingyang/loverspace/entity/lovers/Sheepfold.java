@@ -4,21 +4,11 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * relationship
- * @author 
+ * SheepFold
+ * @author Viking
  */
-public class Relationship implements Serializable {
+public class Sheepfold implements Serializable {
     private Long id;
-
-    /**
-     * 发起者ID
-     */
-    private Long initiatorId;
-
-    /**
-     * 被邀请者ID
-     */
-    private Long inviteesId;
 
     /**
      * 相恋时间
@@ -53,22 +43,6 @@ public class Relationship implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Long getInitiatorId() {
-        return initiatorId;
-    }
-
-    public void setInitiatorId(Long initiatorId) {
-        this.initiatorId = initiatorId;
-    }
-
-    public Long getInviteesId() {
-        return inviteesId;
-    }
-
-    public void setInviteesId(Long inviteesId) {
-        this.inviteesId = inviteesId;
     }
 
     public Date getLoveTime() {
@@ -122,10 +96,8 @@ public class Relationship implements Serializable {
         if (getClass() != that.getClass()) {
             return false;
         }
-        Relationship other = (Relationship) that;
+        Sheepfold other = (Sheepfold) that;
         return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
-            && (this.getInitiatorId() == null ? other.getInitiatorId() == null : this.getInitiatorId().equals(other.getInitiatorId()))
-            && (this.getInviteesId() == null ? other.getInviteesId() == null : this.getInviteesId().equals(other.getInviteesId()))
             && (this.getLoveTime() == null ? other.getLoveTime() == null : this.getLoveTime().equals(other.getLoveTime()))
             && (this.getCreator() == null ? other.getCreator() == null : this.getCreator().equals(other.getCreator()))
             && (this.getUpdater() == null ? other.getUpdater() == null : this.getUpdater().equals(other.getUpdater()))
@@ -138,8 +110,6 @@ public class Relationship implements Serializable {
         final int prime = 31;
         int result = 1;
         result = prime * result + ((getId() == null) ? 0 : getId().hashCode());
-        result = prime * result + ((getInitiatorId() == null) ? 0 : getInitiatorId().hashCode());
-        result = prime * result + ((getInviteesId() == null) ? 0 : getInviteesId().hashCode());
         result = prime * result + ((getLoveTime() == null) ? 0 : getLoveTime().hashCode());
         result = prime * result + ((getCreator() == null) ? 0 : getCreator().hashCode());
         result = prime * result + ((getUpdater() == null) ? 0 : getUpdater().hashCode());
@@ -155,8 +125,6 @@ public class Relationship implements Serializable {
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
-        sb.append(", initiatorId=").append(initiatorId);
-        sb.append(", inviteesId=").append(inviteesId);
         sb.append(", loveTime=").append(loveTime);
         sb.append(", creator=").append(creator);
         sb.append(", updater=").append(updater);

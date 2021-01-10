@@ -8,7 +8,6 @@
     <result column="user_name" jdbcType="VARCHAR" property="userName" />
     <result column="phone" jdbcType="VARCHAR" property="phone" />
     <result column="role" jdbcType="VARCHAR" property="role" />
-    <result column="relationship_id" jdbcType="BIGINT" property="relationshipId" />
     <result column="enabled" jdbcType="BIT" property="enabled" />
     <result column="deleted" jdbcType="BIT" property="deleted" />
     <result column="creator" jdbcType="VARCHAR" property="creator" />
@@ -17,7 +16,7 @@
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, login_name, pass_word, user_name, phone, `role`, relationship_id, enabled, deleted, 
+    id, login_name, pass_word, user_name, phone, `role`, enabled, deleted,
     creator, updater, create_time, update_time
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
@@ -32,12 +31,12 @@
   </delete>
   <insert id="insert" keyColumn="id" keyProperty="id" parameterType="top.vikingyang.loverspace.entity.admin.User" useGeneratedKeys="true">
     insert into user (login_name, pass_word, user_name, 
-      phone, `role`, relationship_id, 
+      phone, `role`,
       enabled, deleted, creator, 
       updater, create_time, update_time
       )
     values (#{loginName,jdbcType=VARCHAR}, #{passWord,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, 
-      #{phone,jdbcType=VARCHAR}, #{role,jdbcType=VARCHAR}, #{relationshipId,jdbcType=BIGINT}, 
+      #{phone,jdbcType=VARCHAR}, #{role,jdbcType=VARCHAR},
       #{enabled,jdbcType=BIT}, #{deleted,jdbcType=BIT}, #{creator,jdbcType=VARCHAR}, 
       #{updater,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
       )
@@ -59,9 +58,6 @@
       </if>
       <if test="role != null">
         `role`,
-      </if>
-      <if test="relationshipId != null">
-        relationship_id,
       </if>
       <if test="enabled != null">
         enabled,
@@ -97,9 +93,6 @@
       </if>
       <if test="role != null">
         #{role,jdbcType=VARCHAR},
-      </if>
-      <if test="relationshipId != null">
-        #{relationshipId,jdbcType=BIGINT},
       </if>
       <if test="enabled != null">
         #{enabled,jdbcType=BIT},
@@ -139,9 +132,6 @@
       <if test="role != null">
         `role` = #{role,jdbcType=VARCHAR},
       </if>
-      <if test="relationshipId != null">
-        relationship_id = #{relationshipId,jdbcType=BIGINT},
-      </if>
       <if test="enabled != null">
         enabled = #{enabled,jdbcType=BIT},
       </if>
@@ -170,7 +160,6 @@
       user_name = #{userName,jdbcType=VARCHAR},
       phone = #{phone,jdbcType=VARCHAR},
       `role` = #{role,jdbcType=VARCHAR},
-      relationship_id = #{relationshipId,jdbcType=BIGINT},
       enabled = #{enabled,jdbcType=BIT},
       deleted = #{deleted,jdbcType=BIT},
       creator = #{creator,jdbcType=VARCHAR},

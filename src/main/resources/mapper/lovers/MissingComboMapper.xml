@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.vikingyang.loverspace.mapper.lovers.MissingComboMapper">
+  <resultMap id="BaseResultMap" type="top.vikingyang.loverspace.entity.lovers.MissingCombo">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="lamb_id" jdbcType="BIGINT" property="lambId" />
+    <result column="missing_date" jdbcType="VARCHAR" property="missingDate" />
+    <result column="combo" jdbcType="INTEGER" property="combo" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, lamb_id, missing_date, combo
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from missingcombo
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from missingcombo
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="top.vikingyang.loverspace.entity.lovers.MissingCombo" useGeneratedKeys="true">
+    insert into missingcombo (lamb_id, missing_date, combo
+      )
+    values (#{lambId,jdbcType=BIGINT}, #{missingDate,jdbcType=VARCHAR}, #{combo,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="top.vikingyang.loverspace.entity.lovers.MissingCombo" useGeneratedKeys="true">
+    insert into missingcombo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="lambId != null">
+        lamb_id,
+      </if>
+      <if test="missingDate != null">
+        missing_date,
+      </if>
+      <if test="combo != null">
+        combo,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="lambId != null">
+        #{lambId,jdbcType=BIGINT},
+      </if>
+      <if test="missingDate != null">
+        #{missingDate,jdbcType=VARCHAR},
+      </if>
+      <if test="combo != null">
+        #{combo,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="top.vikingyang.loverspace.entity.lovers.MissingCombo">
+    update missingcombo
+    <set>
+      <if test="lambId != null">
+        lamb_id = #{lambId,jdbcType=BIGINT},
+      </if>
+      <if test="missingDate != null">
+        missing_date = #{missingDate,jdbcType=VARCHAR},
+      </if>
+      <if test="combo != null">
+        combo = #{combo,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="top.vikingyang.loverspace.entity.lovers.MissingCombo">
+    update missingcombo
+    set lamb_id = #{lambId,jdbcType=BIGINT},
+      missing_date = #{missingDate,jdbcType=VARCHAR},
+      combo = #{combo,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

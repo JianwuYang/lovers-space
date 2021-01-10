@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+	  http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="1" author="Viking">
+        <createTable tableName="missingCombo">
+            <column name="id" type="bigint" autoIncrement="true" remarks="主键">
+                <constraints nullable="false" primaryKey="true" />
+            </column>
+            <column name="lamb_id" type="bigint" remarks="小羊ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="missing_date" type="varchar(8)" remarks="签到时间">
+                <constraints nullable="false"/>
+            </column>
+            <column name="combo" type="int" remarks="连续签到次数">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

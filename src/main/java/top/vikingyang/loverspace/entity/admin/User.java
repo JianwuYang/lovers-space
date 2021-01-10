@@ -39,11 +39,6 @@ public class User implements Serializable {
     private String role;
 
     /**
-     * 关系ID
-     */
-    private Long relationshipId;
-
-    /**
      * 已启用
      */
     private Boolean enabled;
@@ -123,14 +118,6 @@ public class User implements Serializable {
         this.role = role;
     }
 
-    public Long getRelationshipId() {
-        return relationshipId;
-    }
-
-    public void setRelationshipId(Long relationshipId) {
-        this.relationshipId = relationshipId;
-    }
-
     public Boolean getEnabled() {
         return enabled;
     }
@@ -197,7 +184,6 @@ public class User implements Serializable {
             && (this.getUserName() == null ? other.getUserName() == null : this.getUserName().equals(other.getUserName()))
             && (this.getPhone() == null ? other.getPhone() == null : this.getPhone().equals(other.getPhone()))
             && (this.getRole() == null ? other.getRole() == null : this.getRole().equals(other.getRole()))
-            && (this.getRelationshipId() == null ? other.getRelationshipId() == null : this.getRelationshipId().equals(other.getRelationshipId()))
             && (this.getEnabled() == null ? other.getEnabled() == null : this.getEnabled().equals(other.getEnabled()))
             && (this.getDeleted() == null ? other.getDeleted() == null : this.getDeleted().equals(other.getDeleted()))
             && (this.getCreator() == null ? other.getCreator() == null : this.getCreator().equals(other.getCreator()))
@@ -216,7 +202,6 @@ public class User implements Serializable {
         result = prime * result + ((getUserName() == null) ? 0 : getUserName().hashCode());
         result = prime * result + ((getPhone() == null) ? 0 : getPhone().hashCode());
         result = prime * result + ((getRole() == null) ? 0 : getRole().hashCode());
-        result = prime * result + ((getRelationshipId() == null) ? 0 : getRelationshipId().hashCode());
         result = prime * result + ((getEnabled() == null) ? 0 : getEnabled().hashCode());
         result = prime * result + ((getDeleted() == null) ? 0 : getDeleted().hashCode());
         result = prime * result + ((getCreator() == null) ? 0 : getCreator().hashCode());
@@ -238,7 +223,6 @@ public class User implements Serializable {
         sb.append(", userName=").append(userName);
         sb.append(", phone=").append(phone);
         sb.append(", role=").append(role);
-        sb.append(", relationshipId=").append(relationshipId);
         sb.append(", enabled=").append(enabled);
         sb.append(", deleted=").append(deleted);
         sb.append(", creator=").append(creator);
