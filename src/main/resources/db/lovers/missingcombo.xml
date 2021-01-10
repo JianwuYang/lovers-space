@@ -22,4 +22,10 @@
         </createTable>
     </changeSet>
 
+    <changeSet id="2" author="Viking">
+        <createIndex tableName="missingCombo" indexName="idx_lamb_id">
+            <column name="lamb_id"/>
+        </createIndex>
+    </changeSet>
+
 </databaseChangeLog>

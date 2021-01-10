@@ -14,4 +14,11 @@ public interface LambsMapper {
     int updateByPrimaryKeySelective(Lamb record);
 
     int updateByPrimaryKey(Lamb record);
+
+    /**
+     * 寻找我的小羊
+     * @param userId 用户ID
+     * @return 小羊信息
+     */
+    Lamb findMyLamb(Long userId);
 }

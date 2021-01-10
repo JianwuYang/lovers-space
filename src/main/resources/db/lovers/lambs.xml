@@ -13,18 +13,26 @@
             <column name="user_id" type="bigint" remarks="用户ID">
                 <constraints nullable="false"/>
             </column>
+            <column name="pet_name" type="varchar(255)" remarks="爱称">
+                <constraints nullable="true"/>
+            </column>
             <column name="fold_id" type="bigint" remarks="羊圈ID">
                 <constraints nullable="false"/>
             </column>
             <column name="deleted" type="bit" remarks="删除" defaultValue="0">
                 <constraints nullable="false"/>
             </column>
-            <column name="pet_name" type="varchar(255)" remarks="爱称"/>
             <column name="creator" type="varchar(55)" remarks="创建人"/>
             <column name="updater" type="varchar(55)" remarks="更新人"/>
             <column name="create_time" type="datetime" remarks="创建时间"/>
             <column name="update_time" type="datetime" remarks="更新时间"/>
         </createTable>
+    </changeSet>
+
+    <changeSet id="2" author="Viking">
+        <createIndex tableName="lambs" indexName="idx_user_id">
+            <column name="user_id"/>
+        </createIndex>
     </changeSet>
 
 </databaseChangeLog>
